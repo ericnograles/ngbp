@@ -1,6 +1,6 @@
-module.exports = function ( karma ) {
-  karma.set({
-    /** 
+module.exports = function ( config ) {
+  config.set({
+    /**
      * From where to look for files, starting with the location of this file.
      */
     basePath: '../',
@@ -9,34 +9,42 @@ module.exports = function ( karma ) {
      * This is the list of file patterns to load into the browser during testing.
      */
     files: [
-      <% scripts.forEach( function ( file ) { %>'<%= file %>',
-      <% }); %>
-      'src/**/*.js',
-      'src/**/*.coffee',
+      '<% scripts.forEach( function ( file ) { %><%= file %>',
+      '<% }); %>'+
+      'src/**/*.js'
     ],
     exclude: [
       'src/assets/**/*.js'
     ],
     frameworks: [ 'jasmine' ],
-    plugins: [ 'karma-jasmine', 'karma-firefox-launcher', 'karma-coffee-preprocessor' ],
+    plugins: [ 'karma-jasmine', 'karma-phantomjs-launcher', 'karma-junit-reporter','karma-coverage'],
     preprocessors: {
-      '**/*.coffee': 'coffee',
+      'src/**/!(*.spec).js': ['coverage']
     },
 
     /**
      * How to report, by default.
      */
-    reporters: 'dots',
+    reporters: ['dots', 'junit', 'coverage'],
+
+    junitReporter: {
+      outputFile: 'test-results.xml'
+    },
+
+    coverageReporter: {
+      type: 'cobertura',
+      dir: 'coverage/'
+    },
 
     /**
      * On which port should the browser connect, on which port is the test runner
      * operating, and what is the URL path for the browser to use.
-     */
-    port: 9018,
-    runnerPort: 9100,
+     * bumped ports so we can run 2 sessions      */
+    port: 9019,
+    runnerPort: 9101,
     urlRoot: '/',
 
-    /** 
+    /**
      * Disable file watching by default.
      */
     autoWatch: false,
@@ -55,8 +63,7 @@ module.exports = function ( karma ) {
      * the aesthetic advantage of not launching a browser every time you save.
      */
     browsers: [
-      'Firefox'
+      'PhantomJS'
     ]
   });
 };
-
