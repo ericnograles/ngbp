@@ -8,12 +8,12 @@ An opinionated kickstarter for [AngularJS](http://angularjs.org) projects.
 This fork simply adds an Express server that will run against the /build directory to go with the watch task, under the assumption that your Angular app will run standalone on a CDN or web server separate from your API.
 
 ## Fork Usage
-Prerequisites: NodeJS
-NodeJS Library Preqrequisites: bower-cli, karma
+Prerequisites: Node.js
+Node.js Library Preqrequisites: bower-cli, karma
 1. Run sudo npm install
-1. Run bower install
-1. Run grunt server
-1. Browse to localhost:3444
+2. Run bower install
+3. Run grunt server
+4. Browse to localhost:3444
 
 ## Quick Start
 
