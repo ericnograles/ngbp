@@ -10,7 +10,7 @@ This fork simply adds an Express server that will run against the /build directo
 ## Fork Usage
 Prerequisites: Node.js
 
-Node.js Library Preqrequisites: bower-cli, karma
+Node.js Library Preqrequisites: bower, grunt-cli, karma (see below)
 
 1. Run sudo npm install
 2. Run bower install
