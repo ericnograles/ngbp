@@ -20,6 +20,8 @@ $ grunt watch
 ## Fork Notes
 This fork simply adds an Express server that will run against the /build directory to go with the watch task, under the assumption that your Angular app will run standalone on a CDN or web server separate from your API.  The main impetus to this change was that certain configurations didn't take kindly to browsing the NGBP artifacts directly on the filesystem (i.e. for CORS-related debugging).
 
+Also added was a Cobertura code coverage report. Unit tests in Angular are lovely and all, but what good are they if you don't know the gaps of your test coverage? When you run grunt server (per the instructions below), check out a created folder called /coverage to get at the XML Cobertura report.
+
 ## Fork Usage
 
 1. Run sudo npm install
